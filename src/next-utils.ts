@@ -7,4 +7,4 @@ export const nextApp = next({
     port: PORT
 })
 
-export const nextHandler = nextApp.getRequestHandler
+export const nextHandler = nextApp.getRequestHandler()

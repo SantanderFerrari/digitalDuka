@@ -21,7 +21,7 @@ const NavItems = () => {
   }, []);
 
   const isAnyOpen = activeIndex !== null;
-  const navRef = useRef<HTMLDivElement | null>();
+  const navRef = useRef<HTMLDivElement | null>(null);
   useOnClickOutside(navRef, () => setActiveIndex(null));
 
   return (
