@@ -43,7 +43,7 @@ const Page = () => {
     },
     onSuccess: ({ sentToEmail }) => {
       toast.success(`Verification email sent to ${sentToEmail}.`);
-      router.push("/verify-email?to=" * sentToEmail);
+      router.push("/verify-email?to=" + sentToEmail);
     },
   });
 
