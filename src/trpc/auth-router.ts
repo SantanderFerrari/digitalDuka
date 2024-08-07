@@ -4,6 +4,7 @@ import { getPayloadClient } from "../get-payload";
 import { TRPCError } from "@trpc/server";
 import VerifyEmail from "@/components/VerifyEmail";
 import { z } from "zod";
+import payload from "payload";
 
 export const authRouter = router({
 createPayloadUser: publicProcedure
@@ -34,7 +35,8 @@ await payload.create({
 })
 return {success:true, sentToEmail:email}
 }),
-verifyEmail: publicProcedure.input(z.object({token:z.string()}))
+verifyEmail: publicProcedure
+.input(z.object({token:z.string()}))
 .query(async({input})=>{
 const{token}= input
 
@@ -45,5 +47,25 @@ const isVerified = await payload.verifyEmail({
 })
 if(!isVerified)throw new TRPCError({code:'UNAUTHORIZED'})
     return{success:true}
+}),
+
+signIn : publicProcedure
+.input(AuthCredentialsValidator)
+.mutation(async({input,ctx})=>{
+    const {email,password}= input
+    const{res}=ctx
+    try {
+        await payload.login({
+            collection:'users',
+            data:{
+                email,
+                password,
+            },
+            res
+        })
+        return {success:true}
+    }catch(err){
+        throw new TRPCError({code: 'UNAUTHORIZED'})
+    }
 }),
 })
