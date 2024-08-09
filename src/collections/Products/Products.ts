@@ -34,10 +34,10 @@ export const Products: CollectionConfig = {
         {
             name:"Price",
             label:"Price in USD",
-            min:0,
-            max:1000,
             type:"number",
             required: true,
+            min:0,
+            max:1000,
         },
         {
             name: "category",
@@ -48,7 +48,7 @@ export const Products: CollectionConfig = {
                 ),
                 required: true,
         },
-       /* {
+       {
             name:"product_files",
             label: "Product file(s)",
             type: "relationship",
@@ -56,7 +56,7 @@ export const Products: CollectionConfig = {
             relationTo: "product_files",
             hasMany: false,
         },
-        */
+        
         {
             name:"approvedForSale",
             label:"Product Status",
