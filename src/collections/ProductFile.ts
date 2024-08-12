@@ -87,14 +87,14 @@ export const ProductFiles: CollectionConfig = {
   },
   fields: [
     {
-      name: 'user',
+      name: 'users',
       type: 'relationship',
       relationTo: 'users',
+      hasMany: false,
+      required: true,
       admin: {
         condition: () => false,
       },
-      hasMany: false,
-      required: true,
     },
   ],
 }

@@ -2,7 +2,7 @@ import { z } from "zod"
 
 
 export const QueryValidator = z.object({
-    categoty: z.string().optional(),
+    category: z.string().optional(),
     sort: z.enum(["asc","desc"]).optional(),
     limit: z.number().optional(),
 }) 
